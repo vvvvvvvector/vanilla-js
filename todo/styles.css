@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 20px;
+}
+
+button {
+  padding: 5px 5px;
+}
+
+ul {
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+ul li span {
+  margin-right: 8px;
+  font-size: large;
+}
+
+ul li button {
+  height: 20px;
+  width: 20px;
+  padding: 2px;
+}
+
+input {
+  padding: 5px 5px;
+  margin-bottom: 15px;
+  width: 350px;
+}
