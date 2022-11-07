@@ -21,17 +21,18 @@ ul li {
 }
 
 ul li span {
-  margin-right: 8px;
   font-size: large;
 }
 
 ul li button {
+  box-sizing: border-box;
+  line-height: 0.25em;
   height: 20px;
   width: 20px;
-  padding: 2px;
+  margin-left: 10px;
 }
 
-input {
+.task-text-input {
   padding: 5px 5px;
   margin-bottom: 15px;
   width: 350px;

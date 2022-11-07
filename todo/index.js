@@ -28,8 +28,6 @@ input.addEventListener("input", (event) => {
 });
 
 input.addEventListener("keyup", (event) => {
-  event.preventDefault();
-
   if (event.key === "Enter") {
     addTaskButton.click();
   }
@@ -56,11 +54,40 @@ const createListItem = (task) => {
 
   const span = document.createElement("span");
   const button = document.createElement("button");
+  const spanChangeInput = document.createElement("input");
 
+  spanChangeInput.style = "display: none";
   span.innerText = task.text;
 
-  button.innerText = "X";
+  button.innerText = "x";
   button.style = "display: none";
+
+  span.addEventListener("click", (event) => {
+    event.target.style = "display: none";
+    spanChangeInput.style = "display: visible; height: 20px";
+
+    spanChangeInput.value = event.target.innerText;
+    spanChangeInput.focus();
+
+    spanChangeInput.addEventListener("input", (event) => {
+      span.innerText = event.target.value;
+    });
+
+    spanChangeInput.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") {
+        data.map((item) => {
+          if (item.id === task.id) {
+            item.text = span.innerText;
+          }
+        });
+
+        localStorage.setItem("data", JSON.stringify(data));
+
+        span.style = "display: visible";
+        event.target.style = "display: none";
+      }
+    });
+  });
 
   div.addEventListener("mouseover", () => {
     button.style = "display: visible";
@@ -89,6 +116,7 @@ const createListItem = (task) => {
   });
 
   div.appendChild(span);
+  div.appendChild(spanChangeInput);
   div.appendChild(button);
 
   li.appendChild(div);
