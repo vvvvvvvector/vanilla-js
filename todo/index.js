@@ -3,11 +3,24 @@ const addTaskButton = document.getElementsByTagName("button")[0];
 const ul = document.querySelector("ul");
 
 let taskText = "";
+const data = [];
 
-const clearButton = document.getElementById("clear");
+document.addEventListener("DOMContentLoaded", () => {
+  const items = localStorage.getItem("data");
 
-clearButton.addEventListener("click", () => {
+  if (items) {
+    const tasks = JSON.parse(items);
+
+    tasks.forEach((task) => {
+      data.push(task);
+      createListItem(task);
+    });
+  }
+});
+
+document.getElementById("clear").addEventListener("click", () => {
   ul.innerHTML = "";
+  localStorage.clear();
 });
 
 input.addEventListener("input", (event) => {
@@ -24,19 +37,27 @@ input.addEventListener("keyup", (event) => {
 
 addTaskButton.addEventListener("click", () => {
   if (taskText !== "") {
-    createListItem(taskText);
+    if (data.length === 0) {
+      data.push({ id: 0, text: taskText });
+      localStorage.setItem("data", JSON.stringify(data));
+    } else {
+      data.push({ id: data[data.length - 1].id + 1, text: taskText });
+      localStorage.setItem("data", JSON.stringify(data));
+    }
+
+    createListItem(data[data.length - 1]);
     input.value = taskText = "";
   }
 });
 
-const createListItem = (text) => {
+const createListItem = (task) => {
   const li = document.createElement("li");
   const div = document.createElement("div");
 
   const span = document.createElement("span");
   const button = document.createElement("button");
 
-  span.innerText = text;
+  span.innerText = task.text;
 
   button.innerText = "X";
   button.style = "display: none";
@@ -50,6 +71,20 @@ const createListItem = (text) => {
   });
 
   button.addEventListener("click", (event) => {
+    const filtered = data.filter((item) => item.id !== task.id);
+
+    data.length = 0; // empty an array
+
+    filtered.forEach((i) => {
+      data.push(i);
+    });
+
+    data.map((i, index) => {
+      i.id = index;
+    });
+
+    localStorage.setItem("data", JSON.stringify(data));
+
     event.target.closest("li").remove();
   });
 
