@@ -1,0 +1,31 @@
+body {
+  background-color: antiquewhite;
+}
+
+.items {
+  display: flex;
+}
+
+.item {
+  margin-right: 20px;
+}
+
+.item h3 {
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #3077c6;
+  margin-top: 20px;
+}
+
+.item h4 {
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #bfbfbf;
+  margin-top: 24px;
+}
