@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  text-decoration: none;
+  padding: 0;
+  list-style: none;
+  outline: none;
+  font-family: -apple-system, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  padding: 40px;
+}
+
+.component {
+  width: 300px;
+}
+
+.date {
+  display: flex;
+  padding: 20px;
+  border-radius: 10px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: palevioletred;
+}
+
+.popup {
+  border-radius: 5px;
+  margin-top: 10px;
+  background-color: aquamarine;
+  padding: 15px 40px;
+}
+
+.adults,
+.rooms,
+.children {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date button {
+  padding: 5px;
+}
+
+.buttons button:first-of-type {
+  margin-right: 5px;
+}
