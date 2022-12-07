@@ -27,6 +27,8 @@ body {
 }
 
 .popup {
+  display: flex;
+  flex-direction: column;
   border-radius: 5px;
   margin-top: 10px;
   background-color: aquamarine;

@@ -60,12 +60,42 @@ const Popup = () => {
     .querySelectorAll("button");
 
   plusMinusChildren[0].addEventListener("click", () => {
-    if (liChildren.querySelector("b").innerHTML > 0)
+    if (liChildren.querySelector("b").innerHTML > 0) {
       liChildren.querySelector("b").innerHTML--;
+
+      popup.lastChild.remove();
+    }
   });
 
   plusMinusChildren[1].addEventListener("click", () => {
-    liChildren.querySelector("b").innerHTML++;
+    if (liChildren.querySelector("b").innerHTML < 10) {
+      liChildren.querySelector("b").innerHTML++;
+
+      const div = document.createElement("div");
+      div.style.marginTop = "10px";
+      div.style.display = "flex";
+      div.style.justifyContent = "space-between";
+      div.style.alignItems = "center";
+
+      const span = document.createElement("span");
+      span.style.fontSize = "12px";
+      span.innerText = "What is the age of the child?";
+
+      const select = document.createElement("select");
+
+      for (let i = 1; i < 18; i++) {
+        const option = document.createElement("option");
+
+        option.innerText = i;
+
+        select.appendChild(option);
+      }
+
+      div.appendChild(span);
+      div.appendChild(select);
+
+      popup.appendChild(div);
+    }
   });
 
   liRooms.appendChild(counter.cloneNode(true));
