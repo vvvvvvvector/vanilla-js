@@ -13,8 +13,7 @@ const Popup = () => {
   const buttonMinus = document.createElement("button");
   buttonMinus.innerText = "-";
 
-  buttons.appendChild(buttonMinus);
-  buttons.appendChild(buttonPlus);
+  buttons.append(buttonMinus, buttonPlus);
 
   const counter = document.createElement("b");
   counter.innerHTML = 0;
@@ -34,9 +33,7 @@ const Popup = () => {
   const spanRooms = document.createElement("span");
   spanRooms.innerText = "rooms";
 
-  liAdults.appendChild(counter.cloneNode(true));
-  liAdults.appendChild(spanAdults);
-  liAdults.appendChild(buttons.cloneNode(true));
+  liAdults.append(counter.cloneNode(true), spanAdults, buttons.cloneNode(true));
 
   const plusMinusAdults = liAdults
     .getElementsByClassName("buttons")[0]
@@ -51,9 +48,11 @@ const Popup = () => {
     liAdults.querySelector("b").innerHTML++;
   });
 
-  liChildren.appendChild(counter.cloneNode(true));
-  liChildren.appendChild(spanChildren);
-  liChildren.appendChild(buttons.cloneNode(true));
+  liChildren.append(
+    counter.cloneNode(true),
+    spanChildren,
+    buttons.cloneNode(true)
+  );
 
   const plusMinusChildren = liChildren
     .getElementsByClassName("buttons")[0]
@@ -91,16 +90,13 @@ const Popup = () => {
         select.appendChild(option);
       }
 
-      div.appendChild(span);
-      div.appendChild(select);
+      div.append(span, select);
 
       popup.appendChild(div);
     }
   });
 
-  liRooms.appendChild(counter.cloneNode(true));
-  liRooms.appendChild(spanRooms);
-  liRooms.appendChild(buttons.cloneNode(true));
+  liRooms.append(counter.cloneNode(true), spanRooms, buttons.cloneNode(true));
 
   const plusMinusRooms = liRooms
     .getElementsByClassName("buttons")[0]
@@ -115,9 +111,7 @@ const Popup = () => {
     liRooms.querySelector("b").innerHTML++;
   });
 
-  ul.appendChild(liAdults);
-  ul.appendChild(liChildren);
-  ul.appendChild(liRooms);
+  ul.append(liAdults, liChildren, liRooms);
 
   popup.appendChild(ul);
 

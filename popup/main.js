@@ -8,7 +8,7 @@ const togglePopupButton = document.getElementById("toggle");
 
 togglePopupButton.addEventListener("click", () => {
   if (!isPopupOpened) {
-    component.appendChild(Popup());
+    component.append(Popup());
   } else {
     component.lastChild.remove();
   }
