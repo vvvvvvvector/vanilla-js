@@ -20,11 +20,16 @@ ul li {
   margin-bottom: 10px;
 }
 
-ul li span {
+ul li div {
+  display: flex;
+  align-items: center;
+}
+
+ul li div span {
   font-size: large;
 }
 
-ul li button {
+ul li div button {
   box-sizing: border-box;
   line-height: 0.25em;
   height: 20px;
