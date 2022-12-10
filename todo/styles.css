@@ -12,7 +12,7 @@ button {
 }
 
 ul {
-  margin-left: 15px;
+  list-style: none;
   margin-bottom: 15px;
 }
 
